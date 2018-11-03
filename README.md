@@ -1,3 +1,7 @@
+# Análise sobre ENJ1 e ENJ2
+
+Foi avaliado que os usuários mais novos tem Perceived Enjoyment mais altos.
+
 
 # Estrutura
 
