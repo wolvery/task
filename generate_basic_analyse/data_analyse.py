@@ -40,6 +40,7 @@ def check_enj_by_age_and_sex(output):
     plt.savefig('check_enj_by_age_and_sex')
     pass
 
+
 def check_enj_by_wiki_user(output):
     output['ENJ1'] = pd.to_numeric(output['ENJ1'], errors='coerce')
     output['ENJ2'] = pd.to_numeric(output['ENJ2'], errors='coerce')
@@ -53,17 +54,16 @@ def check_enj_by_wiki_user(output):
     pass
 
 
+if __name__ == "__main__":
+    output = data_loader.get_data_frame()
+    total_label_wiki4hei(output, translate={0:'male', 1:'female'}, label="GENDER")
+    total_label_wiki4hei(output, translate={
+    '1':'Arts & Humanities',  '2':'Sciences',
+    '3':'Health Sciences', '4':'Engineering & Architecture', '5':'Law & Politics'
+    }, label="DOMAIN")
 
-
-output = data_loader.get_data_frame()
-total_label_wiki4hei(output, translate={0:'male', 1:'female'}, label="GENDER")
-total_label_wiki4hei(output, translate={
-'1':'Arts & Humanities',  '2':'Sciences',
-'3':'Health Sciences', '4':'Engineering & Architecture', '5':'Law & Politics'
-}, label="DOMAIN")
-
-total_label_wiki4hei(output, translate={
-0:'Without',  1:'With'}, label="PhD")
-check_enj_by_age(output)
-check_enj_by_age_and_sex(output)
-check_enj_by_wiki_user(output)
+    total_label_wiki4hei(output, translate={
+    0:'Without',  1:'With'}, label="PhD")
+    check_enj_by_age(output)
+    check_enj_by_age_and_sex(output)
+    check_enj_by_wiki_user(output)
