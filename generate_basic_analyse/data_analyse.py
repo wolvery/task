@@ -34,7 +34,7 @@ def check_enj_by_age_and_sex(output):
     output.GENDER.replace( [1, 0], ['male', 'female'],inplace=True)
     categories = pd.qcut(output["AGE"], 4)
     result = pd.pivot_table(output, index=['GENDER', categories] , values = ['ENJ1','ENJ2'])
-    print('Perceived Enjoyment by age range')
+    print('Perceived Enjoyment by age range and sex')
     print(result)
     result.unstack(level=0).plot.bar(title='Gender and age per ENJ', rot=0, subplots=True)
     plt.savefig('check_enj_by_age_and_sex')
@@ -46,11 +46,13 @@ def check_enj_by_wiki_user(output):
     output = output[output.USERWIKI !='?']
     output.USERWIKI.replace(['1', '0'], ['enrolled', 'non-enrolled'], inplace=True)
     result = pd.pivot_table(output, index=['USERWIKI'] , values = ['ENJ1','ENJ2'])
-    print('Perceived Enjoyment by age range')
+    print('Perceived Enjoyment by WIKI USER')
     print(result)
     result.unstack(level=0).plot.bar(title='User of Wiki per ENJ', rot=0, subplots=True)
     plt.savefig('check_enj_by_wiki_user')
     pass
+
+
 
 
 output = data_loader.get_data_frame()
